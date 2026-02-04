@@ -1,25 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Harry Potter Movies</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harry Potter Movies</title>
 
-<% if (error) { %>
-  <p><%= error %></p>
-<% } else { %>
-  <% movies.forEach(movie => { %>
-    <div>
-      <h2><%= movie.attributes.title %></h2>
-      <img src="<%= movie.attributes.poster %>" width="200" />
+  <!-- Card Layout Css -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .movies-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .movie-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 200px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      overflow: hidden;
+      text-align: center;
+      text-decoration: none;
+      color: black;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .movie-card img {
+      width: 100%;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .movie-card h2 {
+      font-size: 16px;
+      margin: 10px;
+      min-height: 50px;
+    }
+
+    .movie-card h3 {
+      font-size: 14px;
+     
+    }
+  </style>
+</head>
+<body>
+  <h1>Harry Potter Movies</h1>
+
+  <% if (error) { %>
+    <p><%= error %></p>
+  <% } else { %>
+    <div class="movies-container">
+      <% movies.forEach(movie => { %>
+        <a class="movie-card" href="" target="_blank">
+          <img src="<%= movie.attributes.poster %>" alt="<%= movie.attributes.title %>"/>
+          <h2><%= movie.attributes.title %></h2>
+          <h3><%= movie.attributes.release_date %></h3>
+        </a>
+      <% }) %>
     </div>
-  <% }) %>
-<% } %>
-
-
-    
-  </body>
+  <% } %>
+</body>
 </html>
