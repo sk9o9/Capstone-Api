@@ -6,6 +6,20 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Hello</h1>
+    <h1>Harry Potter Movies</h1>
+
+<% if (error) { %>
+  <p><%= error %></p>
+<% } else { %>
+  <% movies.forEach(movie => { %>
+    <div>
+      <h2><%= movie.attributes.title %></h2>
+      <img src="<%= movie.attributes.poster %>" width="200" />
+    </div>
+  <% }) %>
+<% } %>
+
+
+    
   </body>
 </html>
